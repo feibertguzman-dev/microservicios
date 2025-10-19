@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservicios en Ingeniería de Software - Guía Completa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🔷 Microservicios</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#paso-a-paso">Paso a Paso</a></li>
+                <li><a href="#arquitecturas">Arquitecturas</a></li>
+                <li><a href="#stack-tecnologico">Stack Tecnológico</a></li>
+                <li><a href="#ciclo-vida">Ciclo de Vida</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Microservicios en Ingeniería de Software</h1>
+                <p class="hero-subtitle">Una guía completa para entender, diseñar e implementar arquitecturas basadas en microservicios</p>
+                <a href="#introduccion" class="btn-primary">Comenzar a Aprender</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introducción -->
+    <section id="introduccion" class="section">
+        <div class="container">
+            <h2 class="section-title">¿Qué son los Microservicios?</h2>
+            <div class="content-grid">
+                <div class="content-text">
+                    <p>Los <strong>microservicios</strong> representan un enfoque arquitectónico para el desarrollo de aplicaciones en el cual una aplicación grande se construye como un conjunto de servicios modulares y pequeños. Cada módulo soporta un objetivo de negocio específico y utiliza una interfaz simple y bien definida para comunicarse con otros servicios.</p>
+                    
+                    <p>A diferencia de la arquitectura monolítica tradicional, donde todos los componentes están estrechamente acoplados y se ejecutan como una única unidad, los microservicios permiten que cada servicio sea desarrollado, desplegado y escalado de manera independiente. Esta independencia proporciona mayor flexibilidad, resiliencia y facilita la adopción de nuevas tecnologías.</p>
+                    
+                    <h3>Ventajas de los Microservicios</h3>
+                    <ul>
+                        <li><strong>Escalabilidad independiente:</strong> Cada servicio puede escalarse según sus necesidades específicas</li>
+                        <li><strong>Flexibilidad tecnológica:</strong> Diferentes servicios pueden usar diferentes tecnologías</li>
+                        <li><strong>Despliegue independiente:</strong> Los servicios pueden actualizarse sin afectar a otros</li>
+                        <li><strong>Resiliencia:</strong> El fallo de un servicio no afecta necesariamente a toda la aplicación</li>
+                        <li><strong>Equipos autónomos:</strong> Equipos pequeños pueden trabajar en servicios específicos</li>
+                    </ul>
+                    
+                    <h3>Desafíos de los Microservicios</h3>
+                    <ul>
+                        <li><strong>Complejidad operacional:</strong> Mayor número de servicios que gestionar</li>
+                        <li><strong>Comunicación entre servicios:</strong> Necesidad de gestionar llamadas de red</li>
+                        <li><strong>Consistencia de datos:</strong> Transacciones distribuidas son más complejas</li>
+                        <li><strong>Testing:</strong> Pruebas de integración más complejas</li>
+                    </ul>
+                </div>
+                <div class="content-image">
+                    <img src="images/monolithic_vs_microservices.png" alt="Monolítico vs Microservicios">
+                    <p class="image-caption">Comparación entre arquitectura monolítica y microservicios</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paso a Paso -->
+    <section id="paso-a-paso" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Cómo Crear un Microservicio: Guía Paso a Paso</h2>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Identificar el Dominio del Negocio</h3>
+                    <p>El primer paso es identificar y delimitar claramente el dominio del negocio que el microservicio va a manejar. Utiliza técnicas como <strong>Domain-Driven Design (DDD)</strong> para identificar bounded contexts. Cada microservicio debe tener una responsabilidad única y bien definida.</p>
+                    <div class="step-details">
+                        <strong>Actividades clave:</strong>
+                        <ul>
+                            <li>Analizar los requisitos del negocio</li>
+                            <li>Identificar bounded contexts</li>
+                            <li>Definir las responsabilidades del servicio</li>
+                            <li>Establecer los límites del servicio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Diseñar la API del Servicio</h3>
+                    <p>Define cómo otros servicios y clientes interactuarán con tu microservicio. Diseña una API RESTful o utiliza GraphQL según tus necesidades. Documenta claramente los endpoints, métodos HTTP, formatos de datos y códigos de respuesta.</p>
+                    <div class="step-details">
+                        <strong>Consideraciones:</strong>
+                        <ul>
+                            <li>Versionado de API (v1, v2, etc.)</li>
+                            <li>Documentación con OpenAPI/Swagger</li>
+                            <li>Contratos de API claros</li>
+                            <li>Manejo de errores consistente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Seleccionar el Stack Tecnológico</h3>
+                    <p>Elige las tecnologías más adecuadas para tu microservicio. Considera el lenguaje de programación, framework, base de datos, y herramientas de comunicación. La ventaja de los microservicios es que puedes elegir diferentes tecnologías para diferentes servicios.</p>
+                    <div class="step-details">
+                        <strong>Opciones comunes:</strong>
+                        <ul>
+                            <li>Lenguajes: Java, Python, Node.js, Go, .NET</li>
+                            <li>Frameworks: Spring Boot, Express, Flask, FastAPI</li>
+                            <li>Bases de datos: PostgreSQL, MongoDB, Redis</li>
+                            <li>Mensajería: RabbitMQ, Kafka, NATS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Implementar la Lógica de Negocio</h3>
+                    <p>Desarrolla la funcionalidad core del microservicio siguiendo principios de código limpio y patrones de diseño. Implementa la lógica de negocio de manera que sea testeable, mantenible y escalable.</p>
+                    <div class="step-details">
+                        <strong>Buenas prácticas:</strong>
+                        <ul>
+                            <li>Separación de responsabilidades (SRP)</li>
+                            <li>Inyección de dependencias</li>
+                            <li>Patrones de diseño apropiados</li>
+                            <li>Código testeable y documentado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Implementar la Persistencia de Datos</h3>
+                    <p>Cada microservicio debe tener su propia base de datos para mantener el bajo acoplamiento. Implementa el patrón <strong>Database per Service</strong> y define claramente el esquema de datos y las estrategias de migración.</p>
+                    <div class="step-details">
+                        <strong>Aspectos importantes:</strong>
+                        <ul>
+                            <li>Base de datos independiente por servicio</li>
+                            <li>Migraciones de esquema versionadas</li>
+                            <li>Backup y recuperación</li>
+                            <li>Optimización de consultas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Configurar la Comunicación entre Servicios</h3>
+                    <p>Implementa mecanismos de comunicación entre microservicios. Puedes usar comunicación síncrona (REST, gRPC) o asíncrona (mensajería con colas). Implementa patrones como Circuit Breaker para manejar fallos.</p>
+                    <div class="step-details">
+                        <strong>Patrones de comunicación:</strong>
+                        <ul>
+                            <li>REST API (síncrono)</li>
+                            <li>Message Queues (asíncrono)</li>
+                            <li>Event-driven architecture</li>
+                            <li>Service mesh para comunicación avanzada</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">7</div>
+                    <h3>Implementar Observabilidad</h3>
+                    <p>Añade logging, métricas y tracing distribuido para monitorear el comportamiento del microservicio. Utiliza herramientas como Prometheus, Grafana, ELK Stack o Jaeger para observabilidad completa.</p>
+                    <div class="step-details">
+                        <strong>Pilares de observabilidad:</strong>
+                        <ul>
+                            <li>Logging estructurado</li>
+                            <li>Métricas de rendimiento</li>
+                            <li>Distributed tracing</li>
+                            <li>Health checks y alertas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">8</div>
+                    <h3>Containerizar el Servicio</h3>
+                    <p>Empaqueta tu microservicio en un contenedor Docker para asegurar consistencia entre entornos. Crea un Dockerfile optimizado y define las dependencias necesarias.</p>
+                    <div class="step-details">
+                        <strong>Elementos clave:</strong>
+                        <ul>
+                            <li>Dockerfile multi-stage para optimización</li>
+                            <li>Imágenes base ligeras (Alpine)</li>
+                            <li>Variables de entorno para configuración</li>
+                            <li>Health checks en el contenedor</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">9</div>
+                    <h3>Configurar CI/CD</h3>
+                    <p>Establece pipelines de integración y despliegue continuo para automatizar pruebas, construcción y despliegue. Utiliza herramientas como Jenkins, GitLab CI, GitHub Actions o CircleCI.</p>
+                    <div class="step-details">
+                        <strong>Etapas del pipeline:</strong>
+                        <ul>
+                            <li>Build y compilación</li>
+                            <li>Tests automatizados</li>
+                            <li>Análisis de código</li>
+                            <li>Despliegue automatizado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">10</div>
+                    <h3>Desplegar y Monitorear</h3>
+                    <p>Despliega tu microservicio en un orquestador de contenedores como Kubernetes. Configura auto-scaling, load balancing y monitoreo continuo. Establece alertas para detectar problemas proactivamente.</p>
+                    <div class="step-details">
+                        <strong>Aspectos del despliegue:</strong>
+                        <ul>
+                            <li>Orquestación con Kubernetes</li>
+                            <li>Auto-scaling horizontal</li>
+                            <li>Load balancing y service discovery</li>
+                            <li>Monitoreo y alertas en producción</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arquitecturas -->
+    <section id="arquitecturas" class="section">
+        <div class="container">
+            <h2 class="section-title">Arquitecturas de Microservicios</h2>
+            
+            <div class="architecture-intro">
+                <p>Existen diversos patrones arquitectónicos que se pueden aplicar al diseñar sistemas basados en microservicios. La elección del patrón adecuado depende de los requisitos específicos del proyecto, la escala esperada y las necesidades del negocio.</p>
+            </div>
+
+            <div class="architecture-grid">
+                <div class="architecture-card">
+                    <h3>🔷 API Gateway Pattern</h3>
+                    <p>Un <strong>API Gateway</strong> actúa como un punto de entrada único para todos los clientes. Encapsula la arquitectura interna del sistema y proporciona una API adaptada a cada cliente. El gateway maneja solicitudes enrutándolas a los microservicios apropiados, agregando resultados y traduciendo protocolos.</p>
+                    <div class="architecture-benefits">
+                        <strong>Beneficios:</strong>
+                        <ul>
+                            <li>Punto de entrada único simplificado</li>
+                            <li>Reduce el número de llamadas del cliente</li>
+                            <li>Centraliza funciones transversales (autenticación, logging)</li>
+                            <li>Aísla a los clientes de cambios internos</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-use-cases">
+                        <strong>Casos de uso:</strong> Aplicaciones móviles, SPAs, sistemas con múltiples tipos de clientes
+                    </div>
+                </div>
+
+                <div class="architecture-card">
+                    <h3>🔷 Event-Driven Architecture</h3>
+                    <p>En una arquitectura <strong>orientada a eventos</strong>, los microservicios se comunican mediante la producción y consumo de eventos. Cuando un servicio realiza una acción significativa, publica un evento que otros servicios pueden consumir de manera asíncrona.</p>
+                    <div class="architecture-benefits">
+                        <strong>Beneficios:</strong>
+                        <ul>
+                            <li>Bajo acoplamiento entre servicios</li>
+                            <li>Alta escalabilidad y resiliencia</li>
+                            <li>Procesamiento asíncrono eficiente</li>
+                            <li>Facilita la adición de nuevos servicios</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-use-cases">
+                        <strong>Casos de uso:</strong> Sistemas de comercio electrónico, procesamiento de pedidos, notificaciones en tiempo real
+                    </div>
+                </div>
+
+                <div class="architecture-card">
+                    <h3>🔷 Service Mesh</h3>
+                    <p>Un <strong>Service Mesh</strong> es una capa de infraestructura dedicada que controla la comunicación servicio-a-servicio. Proporciona funcionalidades como descubrimiento de servicios, balanceo de carga, cifrado, autenticación y observabilidad sin modificar el código de los servicios.</p>
+                    <div class="architecture-benefits">
+                        <strong>Beneficios:</strong>
+                        <ul>
+                            <li>Gestión centralizada de comunicación</li>
+                            <li>Seguridad mejorada con mTLS</li>
+                            <li>Observabilidad detallada del tráfico</li>
+                            <li>Políticas de retry y circuit breaking</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-use-cases">
+                        <strong>Casos de uso:</strong> Sistemas complejos con muchos microservicios, entornos que requieren alta seguridad
+                    </div>
+                </div>
+
+                <div class="architecture-card">
+                    <h3>🔷 CQRS (Command Query Responsibility Segregation)</h3>
+                    <p><strong>CQRS</strong> separa las operaciones de lectura y escritura en modelos diferentes. Los comandos (escrituras) modifican el estado, mientras que las consultas (lecturas) recuperan datos. Esto permite optimizar cada modelo de manera independiente.</p>
+                    <div class="architecture-benefits">
+                        <strong>Beneficios:</strong>
+                        <ul>
+                            <li>Optimización independiente de lecturas y escrituras</li>
+                            <li>Escalabilidad mejorada</li>
+                            <li>Modelos de datos más simples</li>
+                            <li>Facilita Event Sourcing</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-use-cases">
+                        <strong>Casos de uso:</strong> Sistemas con alta carga de lectura, aplicaciones que requieren auditoría completa
+                    </div>
+                </div>
+
+                <div class="architecture-card">
+                    <h3>🔷 Saga Pattern</h3>
+                    <p>El patrón <strong>Saga</strong> gestiona transacciones distribuidas dividiendo la transacción en una secuencia de transacciones locales. Cada transacción local actualiza la base de datos y publica un evento o mensaje. Si una transacción falla, se ejecutan transacciones compensatorias.</p>
+                    <div class="architecture-benefits">
+                        <strong>Beneficios:</strong>
+                        <ul>
+                            <li>Mantiene la consistencia en sistemas distribuidos</li>
+                            <li>Evita bloqueos de larga duración</li>
+                            <li>Mayor disponibilidad del sistema</li>
+                            <li>Gestión clara de fallos</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-use-cases">
+                        <strong>Casos de uso:</strong> Procesamiento de pedidos, reservas, transacciones financieras distribuidas
+                    </div>
+                </div>
+
+                <div class="architecture-card">
+                    <h3>🔷 Backend for Frontend (BFF)</h3>
+                    <p>El patrón <strong>BFF</strong> crea backends específicos para cada tipo de frontend (web, móvil, IoT). Cada BFF está optimizado para las necesidades particulares de su cliente, agregando y transformando datos de múltiples microservicios.</p>
+                    <div class="architecture-benefits">
+                        <strong>Beneficios:</strong>
+                        <ul>
+                            <li>APIs optimizadas por tipo de cliente</li>
+                            <li>Reduce la lógica en el frontend</li>
+                            <li>Evolución independiente de cada BFF</li>
+                            <li>Mejor rendimiento para cada plataforma</li>
+                        </ul>
+                    </div>
+                    <div class="architecture-use-cases">
+                        <strong>Casos de uso:</strong> Aplicaciones con múltiples tipos de clientes (web, iOS, Android)
+                    </div>
+                </div>
+            </div>
+
+            <div class="architecture-image-section">
+                <img src="images/software_architecture_patterns.png" alt="Patrones de Arquitectura de Software">
+                <p class="image-caption">Diversos patrones de arquitectura de software aplicables a microservicios</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Tecnológico -->
+    <section id="stack-tecnologico" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Stack Tecnológico para Microservicios</h2>
+            
+            <div class="stack-intro">
+                <p>El ecosistema de microservicios requiere una variedad de tecnologías que trabajan en conjunto para proporcionar desarrollo, despliegue, comunicación, monitoreo y gestión eficientes. A continuación se presentan las categorías principales y las tecnologías más utilizadas en cada una.</p>
+            </div>
+
+            <div class="stack-grid">
+                <div class="stack-category">
+                    <h3>💻 Lenguajes y Frameworks</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>Java / Spring Boot</strong>
+                            <p>Framework robusto y maduro para construir microservicios empresariales. Ofrece inyección de dependencias, configuración externalizada y amplio ecosistema.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Node.js / Express</strong>
+                            <p>Ideal para microservicios de alto rendimiento con I/O intensivo. Ecosistema npm rico y excelente para APIs RESTful.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Python / FastAPI</strong>
+                            <p>Framework moderno con validación automática, documentación interactiva y alto rendimiento. Excelente para APIs y servicios de datos.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Go</strong>
+                            <p>Lenguaje compilado con excelente rendimiento y concurrencia nativa. Ideal para servicios de alto tráfico y baja latencia.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>.NET Core / ASP.NET</strong>
+                            <p>Framework multiplataforma de Microsoft con excelente rendimiento y herramientas de desarrollo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>🗄️ Bases de Datos</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>PostgreSQL</strong>
+                            <p>Base de datos relacional robusta con soporte para JSON, transacciones ACID y extensiones avanzadas.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>MongoDB</strong>
+                            <p>Base de datos NoSQL orientada a documentos, flexible y escalable horizontalmente.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Redis</strong>
+                            <p>Almacén de datos en memoria para caché, sesiones y colas de mensajes de alta velocidad.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Cassandra</strong>
+                            <p>Base de datos distribuida diseñada para manejar grandes volúmenes de datos con alta disponibilidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>📡 Comunicación y Mensajería</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>REST / HTTP</strong>
+                            <p>Protocolo estándar para comunicación síncrona entre servicios mediante APIs RESTful.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>gRPC</strong>
+                            <p>Framework RPC de alto rendimiento que usa Protocol Buffers, ideal para comunicación servicio-a-servicio.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Apache Kafka</strong>
+                            <p>Plataforma de streaming distribuido para procesamiento de eventos en tiempo real y mensajería asíncrona.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>RabbitMQ</strong>
+                            <p>Message broker que implementa AMQP, ideal para patrones de mensajería complejos.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>NATS</strong>
+                            <p>Sistema de mensajería ligero y de alto rendimiento para arquitecturas cloud-native.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>🐳 Containerización y Orquestación</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>Docker</strong>
+                            <p>Plataforma de containerización que empaqueta aplicaciones con sus dependencias para consistencia entre entornos.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Kubernetes</strong>
+                            <p>Orquestador de contenedores que automatiza despliegue, escalado y gestión de aplicaciones containerizadas.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Docker Compose</strong>
+                            <p>Herramienta para definir y ejecutar aplicaciones multi-contenedor, ideal para desarrollo local.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Helm</strong>
+                            <p>Gestor de paquetes para Kubernetes que simplifica el despliegue de aplicaciones complejas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>🔍 Observabilidad y Monitoreo</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>Prometheus</strong>
+                            <p>Sistema de monitoreo y alertas con modelo de datos de series temporales, ideal para métricas.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Grafana</strong>
+                            <p>Plataforma de visualización y análisis para crear dashboards interactivos de métricas.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>ELK Stack (Elasticsearch, Logstash, Kibana)</strong>
+                            <p>Suite completa para búsqueda, análisis y visualización de logs en tiempo real.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Jaeger</strong>
+                            <p>Sistema de tracing distribuido para monitorear y troubleshoot transacciones en sistemas distribuidos.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Zipkin</strong>
+                            <p>Sistema de tracing distribuido que ayuda a recopilar datos de timing para troubleshooting de latencia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>🔐 API Gateway y Service Mesh</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>Kong</strong>
+                            <p>API Gateway de código abierto con plugins para autenticación, rate limiting y transformación.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>NGINX</strong>
+                            <p>Servidor web y proxy inverso que puede funcionar como API Gateway y load balancer.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Istio</strong>
+                            <p>Service mesh que proporciona gestión de tráfico, seguridad y observabilidad para microservicios.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Linkerd</strong>
+                            <p>Service mesh ligero y fácil de usar para Kubernetes con enfoque en simplicidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>🚀 CI/CD</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>Jenkins</strong>
+                            <p>Servidor de automatización de código abierto con amplio ecosistema de plugins.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>GitLab CI/CD</strong>
+                            <p>Plataforma integrada con control de versiones para pipelines de CI/CD.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>GitHub Actions</strong>
+                            <p>Automatización de workflows directamente desde repositorios de GitHub.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>ArgoCD</strong>
+                            <p>Herramienta de continuous delivery declarativa para Kubernetes con enfoque GitOps.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <h3>🔧 Service Discovery y Configuration</h3>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <strong>Consul</strong>
+                            <p>Solución para service discovery, configuración y segmentación de servicios.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Eureka</strong>
+                            <p>Servicio de descubrimiento de Netflix OSS, popular en ecosistemas Spring Cloud.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>etcd</strong>
+                            <p>Almacén de clave-valor distribuido para configuración y service discovery.</p>
+                        </div>
+                        <div class="tech-item">
+                            <strong>Spring Cloud Config</strong>
+                            <p>Servidor de configuración centralizada para aplicaciones distribuidas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stack-image-section">
+                <img src="images/microservices_technologies_stack.jpg" alt="Stack Tecnológico de Microservicios">
+                <p class="image-caption">Ecosistema tecnológico completo para arquitecturas de microservicios</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ciclo de Vida -->
+    <section id="ciclo-vida" class="section">
+        <div class="container">
+            <h2 class="section-title">Ciclo de Vida del Software en Microservicios</h2>
+            
+            <div class="lifecycle-intro">
+                <p>El ciclo de vida del desarrollo de software en arquitecturas de microservicios sigue principios similares al desarrollo tradicional, pero con adaptaciones específicas para manejar la naturaleza distribuida y la independencia de los servicios. El enfoque DevOps y la automatización son fundamentales en cada fase.</p>
+            </div>
+
+            <div class="lifecycle-phases">
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">📋</div>
+                        <h3>1. Planificación y Análisis</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>En esta fase inicial se definen los requisitos del negocio y se identifican los bounded contexts que se convertirán en microservicios. Se realiza el análisis de dominio utilizando técnicas de Domain-Driven Design.</p>
+                        <div class="phase-activities">
+                            <strong>Actividades principales:</strong>
+                            <ul>
+                                <li>Identificación de requisitos funcionales y no funcionales</li>
+                                <li>Análisis de dominio y bounded contexts</li>
+                                <li>Definición de la estrategia de descomposición</li>
+                                <li>Planificación de la arquitectura general</li>
+                                <li>Identificación de dependencias entre servicios</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Documento de requisitos, diagrama de bounded contexts, arquitectura de alto nivel
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">🎨</div>
+                        <h3>2. Diseño</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>Se diseña la arquitectura detallada de cada microservicio, incluyendo APIs, modelos de datos, patrones de comunicación y estrategias de resiliencia. Se definen los contratos entre servicios y las interfaces públicas.</p>
+                        <div class="phase-activities">
+                            <strong>Actividades principales:</strong>
+                            <ul>
+                                <li>Diseño de APIs RESTful o GraphQL</li>
+                                <li>Definición de esquemas de base de datos</li>
+                                <li>Selección de patrones arquitectónicos (API Gateway, Event-Driven, etc.)</li>
+                                <li>Diseño de estrategias de comunicación (síncrona/asíncrona)</li>
+                                <li>Definición de políticas de seguridad y autenticación</li>
+                                <li>Diseño de estrategias de resiliencia (Circuit Breaker, Retry)</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Especificaciones de API (OpenAPI), diagramas de arquitectura, modelos de datos
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">⚙️</div>
+                        <h3>3. Desarrollo</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>Los equipos desarrollan los microservicios de manera independiente siguiendo las especificaciones de diseño. Se implementa la lógica de negocio, la persistencia de datos y la comunicación entre servicios.</p>
+                        <div class="phase-activities">
+                            <strong>Actividades principales:</strong>
+                            <ul>
+                                <li>Implementación de la lógica de negocio</li>
+                                <li>Desarrollo de APIs y endpoints</li>
+                                <li>Implementación de persistencia de datos</li>
+                                <li>Integración con otros servicios</li>
+                                <li>Implementación de logging y métricas</li>
+                                <li>Desarrollo de tests unitarios y de integración</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Código fuente, tests automatizados, documentación técnica
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">🧪</div>
+                        <h3>4. Testing</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>Se realizan múltiples niveles de testing para asegurar la calidad del software. En microservicios, el testing es más complejo debido a la naturaleza distribuida del sistema.</p>
+                        <div class="phase-activities">
+                            <strong>Tipos de testing:</strong>
+                            <ul>
+                                <li><strong>Unit Testing:</strong> Pruebas de componentes individuales</li>
+                                <li><strong>Integration Testing:</strong> Pruebas de interacción entre servicios</li>
+                                <li><strong>Contract Testing:</strong> Validación de contratos entre servicios</li>
+                                <li><strong>End-to-End Testing:</strong> Pruebas de flujos completos del sistema</li>
+                                <li><strong>Performance Testing:</strong> Pruebas de carga y estrés</li>
+                                <li><strong>Chaos Engineering:</strong> Pruebas de resiliencia y recuperación</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Reportes de testing, cobertura de código, resultados de performance
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">🚀</div>
+                        <h3>5. Despliegue</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>Los microservicios se despliegan de manera independiente utilizando pipelines de CI/CD automatizados. Se utilizan contenedores y orquestadores para gestionar el despliegue en diferentes entornos.</p>
+                        <div class="phase-activities">
+                            <strong>Actividades principales:</strong>
+                            <ul>
+                                <li>Containerización con Docker</li>
+                                <li>Configuración de pipelines CI/CD</li>
+                                <li>Despliegue en Kubernetes u otro orquestador</li>
+                                <li>Configuración de auto-scaling y load balancing</li>
+                                <li>Implementación de estrategias de despliegue (Blue-Green, Canary)</li>
+                                <li>Configuración de service mesh si es necesario</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Imágenes Docker, manifiestos Kubernetes, pipelines configurados
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">📊</div>
+                        <h3>6. Monitoreo y Mantenimiento</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>Una vez en producción, los microservicios requieren monitoreo continuo para detectar problemas, optimizar rendimiento y asegurar disponibilidad. Se implementan los tres pilares de observabilidad: logs, métricas y tracing.</p>
+                        <div class="phase-activities">
+                            <strong>Actividades principales:</strong>
+                            <ul>
+                                <li>Monitoreo de métricas con Prometheus/Grafana</li>
+                                <li>Agregación y análisis de logs con ELK Stack</li>
+                                <li>Tracing distribuido con Jaeger o Zipkin</li>
+                                <li>Configuración de alertas proactivas</li>
+                                <li>Análisis de rendimiento y optimización</li>
+                                <li>Gestión de incidentes y troubleshooting</li>
+                                <li>Actualizaciones y parches de seguridad</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Dashboards de monitoreo, reportes de incidentes, planes de optimización
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lifecycle-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">🔄</div>
+                        <h3>7. Evolución y Mejora Continua</h3>
+                    </div>
+                    <div class="phase-content">
+                        <p>Los microservicios evolucionan continuamente basándose en feedback de usuarios, métricas de rendimiento y nuevos requisitos del negocio. La arquitectura permite evolución independiente de cada servicio.</p>
+                        <div class="phase-activities">
+                            <strong>Actividades principales:</strong>
+                            <ul>
+                                <li>Análisis de feedback de usuarios</li>
+                                <li>Identificación de mejoras basadas en métricas</li>
+                                <li>Refactorización y optimización de código</li>
+                                <li>Implementación de nuevas funcionalidades</li>
+                                <li>Versionado de APIs y estrategias de deprecación</li>
+                                <li>Evaluación de nuevas tecnologías</li>
+                            </ul>
+                        </div>
+                        <div class="phase-deliverables">
+                            <strong>Entregables:</strong> Nuevas versiones de servicios, documentación actualizada, roadmap de producto
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lifecycle-diagram">
+                <h3>Ciclo Continuo DevOps</h3>
+                <p>En arquitecturas de microservicios, el ciclo de vida sigue un modelo continuo donde el desarrollo, testing, despliegue y monitoreo ocurren de manera iterativa y automatizada. Este enfoque DevOps permite entregas frecuentes y rápida respuesta a cambios.</p>
+                <div class="devops-principles">
+                    <div class="principle-card">
+                        <h4>🤝 Colaboración</h4>
+                        <p>Equipos multifuncionales trabajan juntos en el ciclo completo</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>🤖 Automatización</h4>
+                        <p>Pipelines automatizados para build, test y deploy</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>📈 Mejora Continua</h4>
+                        <p>Iteraciones frecuentes basadas en feedback y métricas</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>🔍 Monitoreo</h4>
+                        <p>Observabilidad completa del sistema en producción</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Quiz: Evalúa tus Conocimientos</h2>
+            
+            <div class="quiz-intro">
+                <p>Pon a prueba lo que has aprendido sobre microservicios con este quiz interactivo. Selecciona la respuesta correcta para cada pregunta y recibe feedback inmediato.</p>
+            </div>
+
+            <div id="quiz-container" class="quiz-container">
+                <div class="quiz-question active" data-question="1">
+                    <h3>Pregunta 1 de 10</h3>
+                    <p class="question-text">¿Cuál es la principal diferencia entre una arquitectura monolítica y una de microservicios?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Los microservicios son más lentos que los monolitos</button>
+                        <button class="quiz-option" data-answer="correct">Los microservicios permiten despliegue y escalado independiente de cada componente</button>
+                        <button class="quiz-option" data-answer="wrong">Los monolitos no pueden usar bases de datos</button>
+                        <button class="quiz-option" data-answer="wrong">Los microservicios solo funcionan con Java</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="2">
+                    <h3>Pregunta 2 de 10</h3>
+                    <p class="question-text">¿Qué patrón arquitectónico proporciona un punto de entrada único para todos los clientes?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Service Mesh</button>
+                        <button class="quiz-option" data-answer="correct">API Gateway</button>
+                        <button class="quiz-option" data-answer="wrong">CQRS</button>
+                        <button class="quiz-option" data-answer="wrong">Saga Pattern</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="3">
+                    <h3>Pregunta 3 de 10</h3>
+                    <p class="question-text">¿Cuál es el principio fundamental del patrón "Database per Service"?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Todos los servicios comparten la misma base de datos</button>
+                        <button class="quiz-option" data-answer="correct">Cada microservicio tiene su propia base de datos independiente</button>
+                        <button class="quiz-option" data-answer="wrong">No se deben usar bases de datos en microservicios</button>
+                        <button class="quiz-option" data-answer="wrong">Solo se puede usar MongoDB</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="4">
+                    <h3>Pregunta 4 de 10</h3>
+                    <p class="question-text">¿Qué herramienta se utiliza comúnmente para orquestar contenedores en producción?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Git</button>
+                        <button class="quiz-option" data-answer="wrong">Jenkins</button>
+                        <button class="quiz-option" data-answer="correct">Kubernetes</button>
+                        <button class="quiz-option" data-answer="wrong">MongoDB</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="5">
+                    <h3>Pregunta 5 de 10</h3>
+                    <p class="question-text">¿Cuáles son los tres pilares de la observabilidad?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Frontend, Backend, Database</button>
+                        <button class="quiz-option" data-answer="correct">Logs, Métricas, Tracing</button>
+                        <button class="quiz-option" data-answer="wrong">Docker, Kubernetes, Jenkins</button>
+                        <button class="quiz-option" data-answer="wrong">REST, gRPC, GraphQL</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="6">
+                    <h3>Pregunta 6 de 10</h3>
+                    <p class="question-text">¿Qué patrón se utiliza para gestionar transacciones distribuidas en microservicios?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">API Gateway</button>
+                        <button class="quiz-option" data-answer="wrong">Service Mesh</button>
+                        <button class="quiz-option" data-answer="correct">Saga Pattern</button>
+                        <button class="quiz-option" data-answer="wrong">Singleton Pattern</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="7">
+                    <h3>Pregunta 7 de 10</h3>
+                    <p class="question-text">¿Qué protocolo de comunicación es más eficiente para comunicación servicio-a-servicio?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">FTP</button>
+                        <button class="quiz-option" data-answer="correct">gRPC</button>
+                        <button class="quiz-option" data-answer="wrong">SMTP</button>
+                        <button class="quiz-option" data-answer="wrong">Telnet</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="8">
+                    <h3>Pregunta 8 de 10</h3>
+                    <p class="question-text">¿Qué significa CQRS?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Continuous Query and Response System</button>
+                        <button class="quiz-option" data-answer="correct">Command Query Responsibility Segregation</button>
+                        <button class="quiz-option" data-answer="wrong">Cloud Quality Resource Service</button>
+                        <button class="quiz-option" data-answer="wrong">Container Query Routing System</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="9">
+                    <h3>Pregunta 9 de 10</h3>
+                    <p class="question-text">¿Cuál es una ventaja principal de usar Docker en microservicios?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Hace que el código sea más rápido</button>
+                        <button class="quiz-option" data-answer="correct">Proporciona consistencia entre entornos de desarrollo y producción</button>
+                        <button class="quiz-option" data-answer="wrong">Elimina la necesidad de testing</button>
+                        <button class="quiz-option" data-answer="wrong">Reemplaza a Kubernetes</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question" data-question="10">
+                    <h3>Pregunta 10 de 10</h3>
+                    <p class="question-text">¿Qué herramienta se utiliza para tracing distribuido?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="wrong">Docker</button>
+                        <button class="quiz-option" data-answer="wrong">Redis</button>
+                        <button class="quiz-option" data-answer="correct">Jaeger</button>
+                        <button class="quiz-option" data-answer="wrong">PostgreSQL</button>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div id="quiz-results" class="quiz-results" style="display: none;">
+                    <h3>¡Quiz Completado!</h3>
+                    <div class="results-content">
+                        <div class="score-display">
+                            <span class="score-number" id="final-score">0</span>
+                            <span class="score-total">/ 10</span>
+                        </div>
+                        <p id="results-message"></p>
+                        <button id="restart-quiz" class="btn-primary">Reintentar Quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button id="prev-question" class="btn-secondary" style="display: none;">Anterior</button>
+                <button id="next-question" class="btn-secondary" style="display: none;">Siguiente</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Microservicios</h3>
+                    <p>Guía completa sobre arquitecturas de microservicios en ingeniería de software.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Secciones</h4>
+                    <ul>
+                        <li><a href="#introduccion">Introducción</a></li>
+                        <li><a href="#paso-a-paso">Paso a Paso</a></li>
+                        <li><a href="#arquitecturas">Arquitecturas</a></li>
+                        <li><a href="#stack-tecnologico">Stack Tecnológico</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#ciclo-vida">Ciclo de Vida</a></li>
+                        <li><a href="#quiz">Quiz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Microservicios - Guía Educativa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
